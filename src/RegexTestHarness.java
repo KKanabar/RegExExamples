@@ -1,3 +1,5 @@
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+
 import java.io.Console;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -5,6 +7,28 @@ import java.util.regex.Matcher;
 public class RegexTestHarness
 {
     public static void main(String[] args)
+    {
+        
+    }
+
+    public static void regExChecker(String theRegEx, String string2Check)
+    {
+        Pattern checkRegEx = Pattern.compile(theRegEx);
+        Matcher regExMatcher = checkRegEx.matcher(string2Check);
+
+        while(regExMatcher.find())
+        {
+            if(regExMatcher.group().length() != 0)
+            {
+                System.out.println(regExMatcher.group().trim());
+            }
+
+            System.out.println("Start Index: " + regExMatcher.start());
+            System.out.println("End Index: " + regExMatcher.end());
+        }
+    }
+
+    public static void consoleRegExChecker()
     {
         Console console = System.console();
         if(console == null)
